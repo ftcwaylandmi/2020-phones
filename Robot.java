@@ -33,7 +33,18 @@ public class Robot {
         myself.rightfrontDrive.setPower(-s);
         myself.rightrearDrive.setPower(-s);
     }
-}
+       public void RightDrive(double s){
+        myself.rightfrontDrive.setPower(s);
+        myself.rightrearDrive.setPower(s);
+       }
+       public void LeftDrive(double s){
+        myself.leftrearDrive.setPower(s);
+        myself.leftfrontDrive.setPower(s);
+       }
+    }
+
+
+
 
 
 
