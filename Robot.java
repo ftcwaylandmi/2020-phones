@@ -94,6 +94,7 @@ public class Robot {
         myself.shooterMotor.setPower(0);
     }
 
+
     public void IntakeAndFire() {
         double BeltStop = 1000.00;
         double FeederStop = 500.00;
@@ -117,17 +118,18 @@ public class Robot {
 
     }
 
-    public void DriveByInchesSetPower (int inches, double power){
+    public void DriveByInchesTimeSetPower(int inches, double power) {
         double waitTime = 0.00;
         if (inches > 0) {
             //power = power * -1;
-            waitTime = inches *InchesPerSecond;
+            waitTime = inches * InchesPerSecond;
             Drive(-power);
         }else{
             inches = -inches;
-            waitTime = inches *InchesPerSecond;
+            waitTime = inches * InchesPerSecond;
             Drive(-power);
         }
+
         ElapsedTime timer = new ElapsedTime();
         timer.reset();
         while (timer.milliseconds() > (waitTime * 100)) {
@@ -137,5 +139,27 @@ public class Robot {
 
     }
 
+
+public void SlideByInchesTimeSetPower (int inches, double power) {
+    double waitTime = 0.00;
+    if (inches > 0) {
+        power = power * -1;
+        waitTime = inches * InchesPerSecond;
+        Slide(power);
+    }else{
+        inches = -inches;
+        waitTime = inches * InchesPerSecond;
+        Slide(power);
+    }
+
+    ElapsedTime timer = new ElapsedTime();
+    timer.reset();
+    while (timer.milliseconds() < (waitTime * 100)) {
+
+    }
+    StopDrive();
+ }
 }
+
+
 

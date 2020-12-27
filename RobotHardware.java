@@ -27,6 +27,10 @@ class RobotHardware {
         rightfrontDrive = hwMap.get(DcMotor.class, "rfd");
         leftrearDrive = hwMap.get(DcMotor.class, "lrd");
         rightrearDrive = hwMap.get(DcMotor.class, "rrd");
+        beltMotor = hwMap.get(DcMotor.class, "bm");
+        feederMotor = hwMap.get(DcMotor.class, "fm");
+        shooterMotor = hwMap.get(DcMotor.class, "sm");
+
         leftfrontDrive.setDirection(DcMotor.Direction.REVERSE);
         leftrearDrive.setDirection(DcMotor.Direction.REVERSE);
         rightfrontDrive.setDirection(DcMotor.Direction.FORWARD);

@@ -190,6 +190,59 @@ public class LeftRedAutonomous extends LinearOpMode {
         myrobot.StopDrive();
     }
 
-/**
- * Initialize the TensorFlow Object Detection engine.
- */
+    /**
+     * Initialize the TensorFlow Object Detection engine.
+     */
+    private void initTfod() {
+        int tfodMonitorViewId = hardwareMap.appContext.getResources().getIdentifier(
+                "tfodMonitorViewId", "id", hardwareMap.appContext.getPackageName());
+        TFObjectDetector.Parameters tfodParameters = new TFObjectDetector.Parameters(tfodMonitorViewId);
+        tfodParameters.minResultConfidence = 0.8f;
+        tfod = ClassFactory.getInstance().createTFObjectDetector(tfodParameters, vuforia);
+        tfod.loadModelFromAsset(TFOD_MODEL_ASSET, LABEL_FIRST_ELEMENT, LABEL_SECOND_ELEMENT);
+    }
+
+    private void DriveToOneFromLeftRed(int alreadymoved){
+        telemetry.addData("Starting","DriveToOneFromLeftRed");
+        telemetry.update();
+        int firstdistance = 140;
+        int d;
+        d = firstdistance - alreadymoved;
+        myrobot.DriveByInchesTimeSetPower(d, 1);
+        myrobot.DriveByInchesTimeSetPower(68, 1);
+        myrobot.StopDrive();
+        telemetry.addData("Finishing","DriveToOneFromLeftRed");
+        telemetry.update();
+    }
+
+    private void DriveToTwoFromLeftRed(int alreadymoved){
+        telemetry.addData("Starting","DriveToTwoFromLeftRed");
+        telemetry.update();
+        int firstdistance = 140;
+        int d;
+        d = firstdistance - alreadymoved;
+        myrobot.DriveByInchesTimeSetPower(d,1);
+        myrobot.SlideByInchesTimeSetPower(12, 1);
+        myrobot.DriveByInchesTimeSetPower(48, 1);
+        myrobot.StopDrive();
+        telemetry.addData("Finishing","DriveToTwoFromLeftRed");
+        telemetry.update();
+
+    }
+
+    private void DriveToThreeFromLeftRed(int alreadymoved){
+        telemetry.addData("Starting","DriveToThreeFromLeftRed");
+        telemetry.update();
+        int firstdistance = 140;
+        int d;
+        d = firstdistance - alreadymoved;
+        myrobot.DriveByInchesTimeSetPower(d, 1);
+        myrobot.DriveByInchesTimeSetPower(96, 1);
+        myrobot.StopDrive();
+        telemetry.addData("Finishing","DriveToThreeFromLeftRed");
+        telemetry.update();
+
+    }
+
+}
+
